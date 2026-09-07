@@ -48,6 +48,18 @@ body::after {
     backdrop-filter: blur(10px);
 }
 
+#welcome {
+    font-family: "Outfit", "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e9d5ff;
+    margin-bottom: 1rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+    background-color: rgba(192, 132, 252, 0.12);
+    border: 1px solid rgba(192, 132, 252, 0.28);
+}
+
 .photo {
     width: 148px;
     height: 148px;

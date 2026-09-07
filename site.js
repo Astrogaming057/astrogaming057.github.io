@@ -1,3 +1,19 @@
+const hours = new Date().getHours() // get the current hour
+
+const isMorning = hours >= 4 && hours < 12 // is it morning?
+const isAfternoon = hours >= 12 && hours < 17 // is it afternoon?
+const isEvening = hours >= 17 || hours < 4 // is it evening?
+
+const welcome = document.getElementById("welcome")
+
+if (isMorning) {
+    welcome.textContent = "Good morning! Welcome to my page."
+} else if (isAfternoon) {
+    welcome.textContent = "Good afternoon! Welcome to my page."
+} else if (isEvening) {
+    welcome.textContent = "Good evening! Welcome to my page."
+}
+
 const books = [
     {
         title: "Wings of Fire",
@@ -5,7 +21,7 @@ const books = [
         released: "07/01/2012",
         genres: ["Fantasy", "Fiction", "Adventure"],
     },
-    
+
     {
         title: "How to Train Your Dragon",
         author: "Cressida Cowell",
@@ -23,7 +39,7 @@ const books = [
 const booksList = document.getElementById("books");
 
 books.forEach((book) => {
-    let genreItems = "";;
+    let genreItems = "";
     book.genres.forEach((genre) => {
         genreItems += `<li>${genre}</li>`;
     });
