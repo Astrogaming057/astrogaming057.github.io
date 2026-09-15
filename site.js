@@ -14,6 +14,8 @@ if (isMorning) {
     welcome.textContent = "Good evening! Welcome to my page."
 }
 
+localStorage.setItem("It's a secret to everybody.", "I used to be an adventurer like you, then I took an arrow in the knee.")
+
 const books = [
     {
         title: "Wings of Fire",
