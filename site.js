@@ -92,3 +92,54 @@ const placeBanner = () => {
 bg.addEventListener("load", placeBanner);
 window.addEventListener("resize", placeBanner);
 // background script end
+
+
+// gallery script
+const cdns = [
+    "https://cdn.astroslounge.com",
+    "https://cdn2.astroslounge.com",
+    "https://static.astroslounge.com",
+]
+
+const images = document.querySelectorAll("#carousel img")
+
+let urls = []
+let currentImage = 0
+
+const showImages = () => {
+    if (!urls.length) return
+    const offset = currentImage % urls.length
+    images.forEach((image, index) => {
+        const imageIndex = (index + offset + urls.length) % urls.length
+        image.src = urls[imageIndex]
+    })
+}
+
+const loadGallery = (paths) => {
+    urls = paths.map((path, index) => {
+        const url = `${cdns[index % cdns.length]}${path}`
+        new Image().src = url
+        return url
+    })
+    showImages()
+}
+
+document.getElementById("prev").addEventListener("click", () => {
+    currentImage--
+    showImages()
+})
+
+document.getElementById("next").addEventListener("click", () => {
+    currentImage++
+    showImages()
+})
+
+setInterval(() => {
+    currentImage++
+    showImages()
+}, 5000)
+
+
+fetch("gallery.json")
+    .then((res) => res.json())
+    .then(loadGallery)
